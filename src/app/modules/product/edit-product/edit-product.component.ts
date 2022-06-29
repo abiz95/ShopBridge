@@ -17,6 +17,8 @@ export class EditProductComponent implements OnInit {
   productList: any;
   editProductForm: any;
   oldProductData: any;
+  imageName: string = '';
+  localData: any;
   constructor(
     private activatedroute:ActivatedRoute, 
     private localDataService: LocalDataService,
@@ -36,13 +38,13 @@ export class EditProductComponent implements OnInit {
         validator : validatePrice('productPrice')
       }
     );
-    this.localDataService.getLocalData().subscribe(
+    this.localData = this.localDataService.getLocalData().subscribe(
       (update) => {
         this.store = update;
-        console.log('edit product dataset: ', this.store.productData.value);
         this.productList = this.store.productData.value;
       }
     );
+    //Fetch request params
     this.activatedroute.paramMap.subscribe(params => {
       this.productIdParam = params.get('id');
     });
@@ -53,6 +55,7 @@ export class EditProductComponent implements OnInit {
     return this.editProductForm.controls;
   }
 
+  // Fetch product details
   getProductDetails(productId: any) {
     this.localDataService.localDataArray.forEach(details => {
       if ( details.productId === parseInt(productId)) {
@@ -62,6 +65,7 @@ export class EditProductComponent implements OnInit {
     })
   }
   
+  // Load product details to the form
   loadFormValues(productDetails: any) {
     this.editProductForm.patchValue({
       productId: productDetails.productId,
@@ -71,6 +75,7 @@ export class EditProductComponent implements OnInit {
     })
   }
 
+  // To remove the product
   removeProductById = (productArray, product) => {
     let productIndex
     productArray.forEach(val => {
@@ -84,13 +89,32 @@ export class EditProductComponent implements OnInit {
     return !!productArray.splice(productIndex, 1);
   };
 
+  //To upload the image
+  onImageFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.imageName = event.target.files[0].name;
+      const file = event.target.files[0];
+      this.editProductForm.get('productImage')!.setValue(file);
+    }
+  }
+
+
+  // To save edited change of products
   saveForm() {
-    console.log("update user details");
     if (this.editProductForm.valid) {
+      //This remove the old details of the product
       this.removeProductById(this.productList, this.oldProductData);
+      //This will add the new details of the product
       this.localDataService.localDataArray.push(this.editProductForm.value);
+      //Saving the details to the BehaviorSubject object
       this.localDataService.setProductData(this.localDataService.localDataArray);
       this.router.navigate(['product/manage']);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.localData) {
+      this.localData.unsubscribe();
     }
   }
 

@@ -32,15 +32,7 @@
                         <mat-error *ngIf="productFormValues.productDescription.errors?.required">Required a product description</mat-error>
                 </mat-form-field>
             </p>
-            <p class="field">
-                <mat-form-field appearance="outline">
-                    <mat-label>Product image</mat-label>
-                    <input formControlName="productImage" matInput>
-                    <div id="add-product-img-upload">
-                        <button mat-raised-button color="primary">Choose file</button>
-                    </div>
-                </mat-form-field>
-            </p>
+            <input type="file" (change)="onImageFileChange($event)" />
           </mat-card-content>
           <mat-card-actions>
               <div id="add-product-submit-btn">

@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   toggleSideBar() {
     // this.toggleSideBarForMe.emit();
     // setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 300);
-    console.log('header toggleSideBar',this.isSideBarOpen);
     this.localDataService.sidebarOnChange(!this.isSideBarOpen);
   }
   toggleSideBarChange() {
@@ -35,18 +34,7 @@ export class HeaderComponent implements OnInit {
   }
   
 
-  logoutAdmin() {
-    // this.adminAuth.logout().subscribe(
-    //     (res) => {
-    //       console.log("logoutPath: ", res);
-    //       localStorage.removeItem('token');
-    //       this.router.navigate([res]);
-    //     }
-    //   );
-  }
-
   profileLink() {
-    console.log('Navigate to profile')
     this.router.navigate(['admin/profile'])
   }
 }

@@ -10,7 +10,7 @@ import { ViewProductComponent } from '../product/view-product/view-product.compo
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-
+  localData: any;
   private store = new LocalDataModel();
   productList: any = [];
   constructor(
@@ -19,7 +19,7 @@ export class LandingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.localDataService.getLocalData().subscribe(
+    this.localData = this.localDataService.getLocalData().subscribe(
       (update) => {
         this.store = update;
         this.productList = this.store.productData.value;
@@ -27,6 +27,7 @@ export class LandingComponent implements OnInit {
     );
   }
 
+  // To the call view dialog to view the product
   viewProduct(productDetails: any) {
     const dialogConfig = new MatDialogConfig();
 
@@ -43,5 +44,10 @@ export class LandingComponent implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+    if (this.localData) {
+      this.localData.unsubscribe();
+    }
+  }
 
 }

@@ -45,8 +45,8 @@ export class AddProductComponent implements OnInit {
     })
   }
 
-  onImgFileChange(event: any) {
-    console.log('onImgFileChange', event)
+ //To upload the image
+  onImageFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.imageName = event.target.files[0].name;
       const file = event.target.files[0];
@@ -54,11 +54,9 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+    // To save details of the products
   saveForm() {
-    console.log("update user details");
     if (this.addProductForm.valid) {
-      console.log("addProductForm valid");
-      console.log("addProductForm values: " + this.addProductForm.value);
       this.addId();
       this.localDataService.localDataArray.push(this.addProductForm.value);
       this.localDataService.setProductData(this.localDataService.localDataArray);

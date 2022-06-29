@@ -14,6 +14,7 @@ export class ManageProductsComponent implements OnInit {
 
   private store = new LocalDataModel();
   productList: any = [];
+  localData: any;
 
   constructor(
     private localDataService: LocalDataService,
@@ -21,7 +22,7 @@ export class ManageProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.localDataService.getLocalData().subscribe(
+    this.localData = this.localDataService.getLocalData().subscribe(
       (update) => {
         this.store = update;
         this.productList = this.store.productData.value;
@@ -30,6 +31,7 @@ export class ManageProductsComponent implements OnInit {
     );
   }
 
+  // confirmation for deletion 
   deleteProductDialog(productId: any) {
 
     const dialogConfig = new MatDialogConfig();
@@ -55,6 +57,7 @@ export class ManageProductsComponent implements OnInit {
     this.deleteProductDialog(productId);
   }
 
+  // To delete the product
   removeProductById = (productArray, product) => {
     let productIndex
     productArray.forEach(val => {
@@ -68,6 +71,7 @@ export class ManageProductsComponent implements OnInit {
     return !!productArray.splice(productIndex, 1);
   };
 
+  //It will call the dialog for viewing the product
   viewProduct(productDetails: any) {
     const dialogConfig = new MatDialogConfig();
 
@@ -82,6 +86,12 @@ export class ManageProductsComponent implements OnInit {
       (data) => {
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    if (this.localData) {
+      this.localData.unsubscribe();
+    }
   }
 
 }
