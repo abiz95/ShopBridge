@@ -1,27 +1,28 @@
-# ShopBridge
+General Information
+Project: Shop Bridge
+Front-End technology: Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
+Application setup
+To run the application, navigate to the root folder/project ShopBridge and execute the below mentioned commands
+1.	npm install
+2.	ng serve
 
-## Development server
+Functionalities
+Angular Material has been usedused throughout the application for styling. The application has been made responsive.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Landing page:
+•	It lists all the latest products.
+•	If no products are available then it shows the message to add new products
+•	From the landing, page products can be viewed.
+•	A custom pipe has been created for showing the currency type.
+Add/Edit pages:
+•	The edit and add pages have almost the same functionality.
+•	There is a custom validation added to see if the entered price of a product is lesser than 1 GBP.
+•	And also in the price field, it won’t allow any other value other than the number. A custom directive was created to validate that.
+•	There is a field to upload the image.
+•	Custom reactive form validation was also added.
+Manage listings:
+•	The listing page manages the listing of the products.
+•	All the products will be listed on this page.
+•	The products can be deleted, edited and viewed from the listing page.
+•	An angular material dialogue has been used for the product deletion confirmation message.
