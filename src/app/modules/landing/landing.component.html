@@ -1,0 +1,28 @@
+<div *ngIf="productList.length<1">
+    <app-dashboard-card></app-dashboard-card>
+</div>
+
+<div *ngIf="!(productList.length<1)" class="product-list">
+    <br>
+    <h2>New arrivals</h2>
+    <br>
+    <div  class="product-cards">
+        <div *ngFor="let product of productList">
+            <mat-card class="product-card">
+                <mat-card-content>
+                  <img mat-card-image src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Product">
+                </mat-card-content>
+                <mat-card-header>
+                    <mat-card-title>{{product.productName}}</mat-card-title>
+                    <mat-card-subtitle>{{product.productPrice | currency:'GBP' | price}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="viewProduct(product)">View</button>
+                </mat-card-actions>
+            </mat-card>
+    
+        </div>
+    </div>
+
+</div>

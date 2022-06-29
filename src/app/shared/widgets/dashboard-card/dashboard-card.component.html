@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Publish new listing</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div id="dashboard-card-content">
+            <button mat-raised-button [routerLink]="[ '/product/add' ]" color="primary">Add products</button>
+        </div>
+    </mat-card-content>
+    <div id="dashboard-card-footer">
+        No products added so far. <a class="no-products" [routerLink]="[ '/product/add' ]">Click here</a> to add new products
+    </div>
+  </mat-card>
+  

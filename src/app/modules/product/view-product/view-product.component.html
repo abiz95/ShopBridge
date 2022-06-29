@@ -1,0 +1,13 @@
+<div>
+    <h1>{{data.productName}}</h1>
+    <p>{{data.productPrice | currency:'GBP' | price}}</p>
+    <img mat-card-image src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Product">
+    <mat-dialog-content style="overflow: hidden !important; max-height: initial;">
+        <p>{{data.productDescription}}</p>
+        <mat-dialog-actions>
+            <button mat-button mat-dialog-close>Close</button>
+            <button mat-button>Buy</button>
+        </mat-dialog-actions>
+        <br>
+    </mat-dialog-content>
+</div>

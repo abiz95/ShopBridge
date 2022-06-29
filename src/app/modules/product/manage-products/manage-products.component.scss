@@ -1,0 +1,42 @@
+mat-card {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    mat-card-header {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.example-header-image {
+    background-image: url('https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+}
+
+@media (max-width: 700px) {
+
+    mat-card {
+        display: flex;
+        flex-direction: column;
+
+        mat-card-header {
+            justify-content: center;
+            flex-direction: column;
+
+            mat-card-title {
+                margin-top: 10px;
+            }
+
+            mat-card-subtitle {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        mat-card-actions {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

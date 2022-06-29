@@ -1,0 +1,23 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <!-- <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="ATJ"> -->
+        <!-- <div *ngIf=retrievedImage> -->
+            <!-- <img  *ngIf="retrievedImage" [src]="retrievedImage" alt="Profile"> -->
+            <!-- <div *ngIf="!retrievedImage">
+                <img src="https://www.w3schools.com/howto/img_avatar.png">
+            </div> -->
+        <!-- </div> -->
+        <img src="https://www.w3schools.com/howto/img_avatar.png">
+        <!-- <div class="header">
+            <h2>{{userName}}</h2>
+            <h4>{{profileDetails?.email}}</h4>
+        </div> -->
+    </div>
+    <div class="links">
+        <mat-divider></mat-divider>
+        <br>
+        <a mat-list-item routerLinkActive="list-item-active" (click)="isSideBarToggled()" [routerLinkActiveOptions]="{exact: true}" routerLink="/"><mat-icon>dashboard</mat-icon>Dashboard</a>
+        <a mat-list-item routerLinkActive="list-item-active" (click)="isSideBarToggled()" routerLink="/product/add"><mat-icon>list</mat-icon>New Listing</a>
+        <a mat-list-item routerLinkActive="list-item-active" (click)="isSideBarToggled()" routerLink="product/manage"><mat-icon>library_books</mat-icon>Manage listing</a>
+    </div>
+</mat-nav-list>
