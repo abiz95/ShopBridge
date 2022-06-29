@@ -15,12 +15,14 @@ Landing page:
 •	If no products are available then it shows the message to add new products
 •	From the landing, page products can be viewed.
 •	A custom pipe has been created for showing the currency type.
+
 Add/Edit pages:
 •	The edit and add pages have almost the same functionality.
 •	There is a custom validation added to see if the entered price of a product is lesser than 1 GBP.
 •	And also in the price field, it won’t allow any other value other than the number. A custom directive was created to validate that.
 •	There is a field to upload the image.
 •	Custom reactive form validation was also added.
+
 Manage listings:
 •	The listing page manages the listing of the products.
 •	All the products will be listed on this page.
